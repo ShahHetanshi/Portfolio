@@ -27,7 +27,7 @@ const allProjectsData = [
     icon: <FileText className="h-6 w-6 text-primary" />,
     imageDescription: "Clean interface of a text utility tool showing various manipulation options",
     longDescription: "",
-    image: "src\components\Screenshot 2025-05-06 231613.png",
+    image: "/Screenshot 2025-05-06 231613.png",
   },
   {
     id: 'ecommerce',

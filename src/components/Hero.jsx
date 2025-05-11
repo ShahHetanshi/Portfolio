@@ -70,7 +70,7 @@ const Hero = () => {
             <img    
               class="w-36 h-36 md:w-40 md:h-40 mx-auto rounded-full border-2 border-primary/30 shadow-xl mb-8 object-cover hover:scale-105 transition-transform duration-300"
               alt="Hetanshi Shah Profile Picture"
-              src="src\components\WhatsApp Image 2025-05-06 at 22.36.58_4b9ada4b.jpg" />
+              src="/Profile.jpg" />
           </motion.div>
           
           <motion.h1

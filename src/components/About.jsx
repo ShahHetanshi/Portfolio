@@ -54,7 +54,7 @@ const About = () => {
             <img   
               className="w-full h-full rounded-full object-cover shadow-lg relative border-2 border-background group-hover:scale-105 transition-transform duration-300"
               alt="Hetanshi Shah looking thoughtfully towards the side"
-             src="src\components\image.png" />
+             src="/image.png" />
           </div>
         </motion.div>
         
