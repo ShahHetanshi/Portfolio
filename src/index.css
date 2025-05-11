@@ -1,0 +1,197 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 98%; /* Lighter White */
+    --foreground: 224 60% 10%; /* Softer Dark Blue */
+    --card: 0 0% 100%; 
+    --card-foreground: 224 60% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 60% 10%;
+    --primary: 221.2 83.2% 58.3%; /* Slightly softer Vivid Blue */
+    --primary-foreground: 0 0% 100%; 
+    --secondary: 215 30% 95%; /* Lighter Grayish Blue */
+    --secondary-foreground: 222.2 47.4% 18.2%; /* Softer Darker Blue */
+    --muted: 215 30% 95%;
+    --muted-foreground: 215.4 16.3% 50.9%; /* Softer Muted Blue Gray */
+    --accent: 215 30% 95%; 
+    --accent-foreground: 222.2 47.4% 18.2%;
+    --destructive: 0 78.2% 60.2%; /* Softer Red */
+    --destructive-foreground: 0 0% 100%;
+    --border: 214.3 31.8% 88.4%; /* Softer Light Gray */
+    --input: 214.3 31.8% 88.4%;
+    --ring: 221.2 83.2% 60.3%; /* Softer Ring Blue */
+    --radius: 0.5rem; /* Reference: mitali-dixit uses sharper corners */
+  }
+
+  .dark {
+    --background: 224 30% 8%; /* Darker, less saturated Blue */
+    --foreground: 0 0% 96%; /* Slightly off-white */
+    --card: 222.2 30% 12.2%; /* Darker, less saturated Card Blue */
+    --card-foreground: 0 0% 96%;
+    --popover: 224 30% 8%;
+    --popover-foreground: 0 0% 96%;
+    --primary: 217.2 91.2% 62.8%; /* Brighter, slightly softer Blue */
+    --primary-foreground: 222.2 30% 10.2%; /* Darker Blue for contrast */
+    --secondary: 222.2 30% 14.2%; /* Darker Secondary */
+    --secondary-foreground: 0 0% 96%;
+    --muted: 217.2 25.6% 15.5%; /* Muted Dark Blue */
+    --muted-foreground: 215 20.2% 60.1%; /* Softer Muted Gray */
+    --accent: 217.2 25.6% 15.5%;
+    --accent-foreground: 0 0% 96%;
+    --destructive: 0 68.2% 50.6%; /* Softer Dark Red */
+    --destructive-foreground: 0 0% 96%;
+    --border: 217.2 25.6% 18.5%; /* Softer Border for Dark */
+    --input: 217.2 25.6% 18.5%; 
+    --ring: 217.2 91.2% 62.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border transition-colors duration-200;
+  }
+  html {
+    @apply scroll-smooth;
+    font-feature-settings: "rlig" 1, "calt" 1; /* Enable common ligatures */
+  }
+  body {
+    @apply bg-background text-foreground cursor-none;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.01em;
+  }
+  ::selection {
+    @apply bg-primary/80 text-primary-foreground;
+  }
+}
+
+.gradient-text-hero {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(120deg, hsl(var(--primary)) 20%, hsl(var(--foreground)) 80%);
+}
+.dark .gradient-text-hero {
+  background-image: linear-gradient(120deg, hsl(var(--primary)) 20%, hsl(var(--foreground)) 80%);
+}
+
+.gradient-text { /* For section headings */
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, hsl(var(--primary)), hsl(var(--primary) / 0.8));
+}
+.dark .gradient-text {
+  background-image: linear-gradient(to right, hsl(var(--primary)), hsl(var(--primary) / 0.9));
+}
+
+.card-hover-subtle {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card-hover-subtle:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px -5px hsl(var(--primary) / 0.12), 0 5px 10px -6px hsl(var(--primary) / 0.08);
+}
+.dark .card-hover-subtle:hover {
+  box-shadow: 0 8px 20px -5px hsl(var(--primary) / 0.18), 0 5px 10px -6px hsl(var(--primary) / 0.12);
+  border-color: hsl(var(--border) / 0.7);
+}
+
+.section-heading { /* This is the original for reference, no longer used in components */
+  @apply text-4xl sm:text-5xl font-extrabold mb-10 tracking-tight relative inline-block;
+}
+.section-heading::after { /* This is the original for reference, no longer used in components */
+ content: '';
+ position: absolute;
+ left: 50%;
+ transform: translateX(-50%);
+ bottom: -12px;
+ width: 60px;
+ height: 5px;
+ @apply bg-primary rounded-full;
+ opacity: 0.8;
+}
+
+.skill-badge { /* For project modal */
+  @apply px-3 py-1.5 rounded-md text-xs font-medium;
+}
+
+.skill-badge-sm { /* For project card */
+  @apply px-2 py-1 rounded text-[11px] font-medium;
+  @apply bg-secondary text-secondary-foreground dark:bg-primary/10 dark:text-primary/80;
+}
+
+
+@keyframes blob {
+  0%, 100% {
+    transform: scale(1) translate(0px, 0px) rotate(0deg);
+    border-radius: 55% 45% 40% 60% / 50% 40% 60% 50%;
+  }
+  25% {
+    transform: scale(1.05) translate(15px, -25px) rotate(30deg);
+    border-radius: 40% 55% 60% 40% / 50% 55% 35% 60%;
+  }
+  50% {
+    transform: scale(1.1) translate(-5px, 15px) rotate(60deg);
+     border-radius: 65% 35% 50% 50% / 40% 40% 60% 60%;
+  }
+  75% {
+    transform: scale(1.05) translate(-20px, -10px) rotate(90deg);
+    border-radius: 40% 50% 50% 40% / 40% 50% 50% 50%;
+  }
+}
+
+.animate-blob {
+  animation: blob 18s infinite ease-in-out;
+}
+
+@keyframes tilt {
+  0%, 100% { transform: rotate(-0.5deg); }
+  50% { transform: rotate(0.5deg); }
+}
+.animate-tilt {
+  animation: tilt 6s infinite ease-in-out;
+}
+
+a, button, .cursor-pointer {
+  cursor: inherit; 
+}
+
+.perspective {
+  perspective: 1000px;
+}
+
+/* Add this to your index.css */
+html {
+  overflow-y: scroll; /* Always show scrollbar to prevent layout shift */
+}
+
+body {
+  overflow-y: auto;
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: hsl(var(--primary)) transparent; /* For Firefox */
+}
+
+/* For Chrome/Safari */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--primary));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: hsl(var(--primary) / 0.8);
+}
